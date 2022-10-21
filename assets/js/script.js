@@ -11,16 +11,18 @@ const btn = document.getElementById('play');
 btn.addEventListener('click', function(){
     const difficultyChosen = document.getElementById('selectDifficulty').value;
     elementsPerRow = difficulty(difficultyChosen);
-    console.log("----------");
-    document.getElementById('play')
+    reset();
+    init(elementsPerRow);
+    createBomb();
+});
+
+function reset(){
     container.innerHTML = '';
     container.classList.remove('untouchable');
     output.innerHTML = '';
     counterClick = '';
-    init(elementsPerRow);
-    createBomb();
     arrayNumber = [];
-});
+}
 
 function difficulty(difficultyChosen){
     if (difficultyChosen === "easy") {
@@ -50,7 +52,7 @@ function createSquare(maxSquares){
     square.idElement = maxSquares + 1;
     square.style.width = generateCalcCss();
     square.style.height = generateCalcCss();
-    square.addEventListener('click', clickSquare)
+    square.addEventListener('click', clickSquare, {once:true})
     container.append(square);
 }
 
