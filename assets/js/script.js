@@ -11,6 +11,7 @@ btn.addEventListener('click', function(){
     console.log("----------");
     document.getElementById('play')
     container.innerHTML = '';
+    container.classList.remove('untouchable');
     output.innerHTML = '';
     counterClick = '';
     init(elementsPerRow);
@@ -78,5 +79,7 @@ function createBomb(){
 
 function gameover(){
     const scrittaOutput = document.getElementById('output');
-    scrittaOutput.innerHTML = `HAI PERSO, hai cliccato in totale "${counterClick - 1}" celle che non erano bombe`;
+    scrittaOutput.innerHTML = `HAI PERSO<br>Hai cliccato in totale "${counterClick - 1}" celle che non erano bombe`;
+
+    container.classList.add('untouchable');
 }
