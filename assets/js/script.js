@@ -1,5 +1,7 @@
 const container = document.querySelector ('.container');
 let elementsPerRow;
+let arrayNumber = [];
+let bombs = [];
 
 const btn = document.getElementById('play');
 btn.addEventListener('click', function(){
@@ -9,6 +11,8 @@ btn.addEventListener('click', function(){
     document.getElementById('play')
     container.innerHTML = '';
     init(elementsPerRow);
+    createBomb();
+    arrayNumber = [];
 });
 
 function difficulty(difficultyChosen){
@@ -28,7 +32,9 @@ function init(numElements){
 
     for (let i = 0; i < totalSqares; i++){
         createSquare(i);
+        arrayNumber.push(i + 1);
     }
+    console.log(arrayNumber);
 }
 
 function createSquare(maxSquares){
@@ -50,4 +56,17 @@ function clickSquare(){
     console.log(this.idElement);
     this.innerHTML = this.idElement;
     this.classList.add('square-colored');
+
+    if (bombs.includes(this.idElement)){
+        console.log("GAME OVER");
+        this.classList.add('bomb');
+    }
+}
+
+function createBomb(){
+        // Shuffle arrayNumber
+        const shuffled = arrayNumber.sort(() => 0.5 - Math.random());
+        // Get sub-arrayNumber of first n elements after shuffled
+        bombs = shuffled.slice(0, 16);
+        console.log("BOMBE",bombs);
 }
