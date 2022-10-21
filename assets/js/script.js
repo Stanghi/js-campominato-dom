@@ -80,6 +80,16 @@ function createBomb(){
 function gameover(){
     const scrittaOutput = document.getElementById('output');
     scrittaOutput.innerHTML = `HAI PERSO<br>Hai cliccato in totale "${counterClick - 1}" celle che non erano bombe`;
-
+    showAllBombs();
     container.classList.add('untouchable');
+}
+
+function showAllBombs(){
+    const square = document.getElementsByClassName('square');
+    for(let i = 0; i < square.length; i++){
+        const checkBomb = square[i];
+        if(bombs.includes(parseInt(checkBomb.innerText))){
+            square[i].classList.add('bomb');
+        }
+    }
 }
