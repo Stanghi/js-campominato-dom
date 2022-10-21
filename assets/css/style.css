@@ -71,6 +71,11 @@ h2{
     color: blueviolet;
 }
 /* ------------------MAIN------------------ */
+.untouchable{
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
 .square-colored{
     background-color: lightblue;
     color: blueviolet;
