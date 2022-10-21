@@ -1,0 +1,77 @@
+/* ----------------GENERAL---------------- */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    background-image: linear-gradient(to left top, #0d6efd, #3d4eb5, #383374, #251c3a, #030105);
+}
+
+/* ----------------UTILITY---------------- */
+.debug{
+    background-color: rgba(255, 0, 0, .25);
+    border: 1px solid black;
+}
+
+/* ---------------COMPONENTS--------------- */
+.main-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px);
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    width: 500px;
+    height: 500px;
+}
+
+.square{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+/* -----------------HEADER----------------- */
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    height: 60px;
+    background-color: white;
+}
+
+.right-side{
+    color: blueviolet;
+}
+
+#selectDifficulty,
+#play{
+    padding: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    border: 1px solid blueviolet;
+    border-radius: 5px;
+    color: blueviolet;
+    background-color: white;
+}
+
+h2{
+    color: blueviolet;
+}
+/* ------------------MAIN------------------ */
+.square-colored{
+    background-color: lightblue;
+    color: blueviolet;
+}
