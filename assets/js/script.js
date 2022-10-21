@@ -1,8 +1,11 @@
 const container = document.querySelector ('.container');
+const scrittaOutput = document.getElementById('output');
+
 let elementsPerRow;
 let arrayNumber = [];
 let bombs = [];
 let counterClick = 0;
+let win;
 
 const btn = document.getElementById('play');
 btn.addEventListener('click', function(){
@@ -38,7 +41,6 @@ function init(numElements){
         createSquare(i);
         arrayNumber.push(i + 1);
     }
-    console.log(arrayNumber);
 }
 
 function createSquare(maxSquares){
@@ -62,8 +64,11 @@ function clickSquare(){
     this.classList.add('square-colored');
     counterClick++;
 
+    if (counterClick === win){
+        scrittaOutput.innerHTML = `HAI VINTO`;
+    }
     if (bombs.includes(this.idElement)){
-        console.log("GAME OVER"); //da togliere
+        console.log("BOMBA");
         this.classList.add('bomb');
         gameover();
     }
@@ -74,11 +79,12 @@ function createBomb(){
         const shuffled = arrayNumber.sort(() => 0.5 - Math.random());
         // Get sub-arrayNumber of first n elements after shuffled
         bombs = shuffled.slice(0, 16);
-        console.log("BOMBE",bombs);
+        console.log("BOMBE ->",bombs);
+
+        win = arrayNumber.length - bombs.length;
 }
 
 function gameover(){
-    const scrittaOutput = document.getElementById('output');
     scrittaOutput.innerHTML = `HAI PERSO<br>Hai cliccato in totale "${counterClick - 1}" celle che non erano bombe`;
     showAllBombs();
     container.classList.add('untouchable');
